@@ -190,6 +190,10 @@ h1, h2, h3, h4 {
 /* Layout */
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--pad-x); }
 .section { padding-block: var(--section-y); }
+/* Rhythm: break the monotone vertical beat — couple short statements tight,
+   give the emphasis sections (Benefits, Pricing) more air. */
+.section--tight { padding-block: clamp(2.25rem, 4vh, 3.25rem); }
+.section--air { padding-block: clamp(5rem, 9vh, 7.5rem); }
 
 /* Buttons */
 .btn {
