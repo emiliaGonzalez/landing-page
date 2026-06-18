@@ -80,4 +80,58 @@ import FooterCta from "../components/FooterCta.astro";
     window.addEventListener("resize", onScrollReveal, { passive: true });
     check();
   }
+
+  // ---- Confetti: the brand smiley bursts confetti on click (no email, just joy) ----
+  const COLORS = ["#ff5a00", "#ff3db0", "#c14bff", "#2440ff", "#f6c14e", "#2fe39a"];
+  function confettiBurst(x: number, y: number) {
+    if (reduce) return;
+    const canvas = document.createElement("canvas");
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.style.cssText = "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999";
+    canvas.width = innerWidth * dpr; canvas.height = innerHeight * dpr;
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext("2d")!;
+    ctx.scale(dpr, dpr);
+    const N = 90;
+    const parts = Array.from({ length: N }, (_, i) => {
+      const ang = (Math.PI * 2 * i) / N + (i % 7) * 0.13;
+      const sp = 5 + (i % 11);
+      return {
+        x, y,
+        vx: Math.cos(ang) * sp * (0.5 + (i % 5) / 5),
+        vy: Math.sin(ang) * sp - 6,
+        s: 5 + (i % 6),
+        rot: i, vr: (i % 2 ? 1 : -1) * (0.2 + (i % 5) / 12),
+        c: COLORS[i % COLORS.length],
+        life: 1,
+      };
+    });
+    let raf = 0; const t0 = performance.now();
+    const tick = (t: number) => {
+      const dt = Math.min((t - t0) / 1000, 2);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      let alive = false;
+      for (const p of parts) {
+        p.vy += 0.32; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        p.life = Math.max(0, 1 - dt / 1.5);
+        if (p.life > 0 && p.y < innerHeight + 40) {
+          alive = true;
+          ctx.save(); ctx.globalAlpha = p.life;
+          ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+          ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.6);
+          ctx.restore();
+        }
+      }
+      if (alive) raf = requestAnimationFrame(tick);
+      else { cancelAnimationFrame(raf); canvas.remove(); }
+    };
+    raf = requestAnimationFrame(tick);
+  }
+  document.querySelectorAll<HTMLElement>("[data-confetti]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const r = el.getBoundingClientRect();
+      confettiBurst(r.left + r.width / 2, r.top + r.height / 2);
+    });
+  });
 </script>
