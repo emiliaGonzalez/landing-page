@@ -1,0 +1,46 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Unlimited Code — Suscripciones de desarrollo para todos",
+  description = "Suscríbete y pide todo el desarrollo que quieras: sitios, e-commerce, CRMs, webapps, automatizaciones e IA. Una cuota fija al mes. Pausa o cancela cuando quieras.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ece6e8" />
+    <title>{title}</title>
+
+    <!-- Set JS flag before paint so reveal animations don't flash. -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Bodoni+Moda:ital,wght@1,500;1,600;1,700&display=swap"
+    />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_MX" />
+  </head>
+  <body>
+    <a href="#contenido" class="sr-only">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>

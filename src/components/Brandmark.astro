@@ -1,0 +1,58 @@
+---
+interface Props { tone?: "ink" | "light"; }
+const { tone = "ink" } = Astro.props;
+const cls = tone === "light" ? "wm wm--light" : "wm";
+---
+<span class={cls}>
+  <span class="wm__mark" aria-hidden="true">
+    <svg viewBox="0 0 40 40" width="30" height="30">
+      <rect class="wm__bg" x="1" y="1" width="38" height="38" rx="11" />
+      <g class="wm__face">
+        <circle class="wm__eye wm__eye--l" cx="14.5" cy="17" r="2.1" />
+        <circle class="wm__eye wm__eye--r" cx="25.5" cy="17" r="2.1" />
+        <path class="wm__smile" d="M13 24c1.9 2.7 4.3 4 7 4s5.1-1.3 7-4" fill="none" stroke-width="2.6" stroke-linecap="round" />
+      </g>
+    </svg>
+  </span>
+  <span class="wm__text">Unlimited<span class="wm__b">Code</span></span>
+</span>
+
+<style>
+  .wm { display: inline-flex; align-items: center; gap: 0.55rem; }
+  .wm__mark { display: inline-grid; place-items: center; line-height: 0; }
+  .wm__mark svg { display: block; overflow: visible; }
+  .wm__bg { fill: var(--ink); }
+  .wm__eye { fill: #fff; transform-box: fill-box; transform-origin: center; }
+  .wm__smile { stroke: #fff; }
+  .wm--light .wm__bg { fill: #fff; }
+  .wm--light .wm__eye { fill: var(--ink); }
+  .wm--light .wm__smile { stroke: var(--ink); }
+
+  .wm__text {
+    font-family: var(--font-sans); font-weight: 700; font-size: 18px;
+    letter-spacing: -0.04em; color: var(--ink);
+  }
+  .wm__b { opacity: 0.5; }
+  .wm--light .wm__text { color: #fff; }
+  .wm--light .wm__b { opacity: 0.6; }
+
+  /* idle: blink + a tiny squish on the face; on hover the whole mark gives a happy hop */
+  @media (prefers-reduced-motion: no-preference) {
+    .wm__eye { animation: wmBlink 5.5s var(--ease-out) infinite; }
+    .wm__face { transform-box: fill-box; transform-origin: center; transition: transform 0.4s var(--ease-out); }
+    .wm:hover .wm__mark svg { animation: wmHop 0.5s var(--ease-out); }
+    .wm:hover .wm__smile { animation: wmGrin 0.5s var(--ease-out); }
+    @keyframes wmBlink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.15); }
+    }
+    @keyframes wmHop {
+      0% { transform: translateY(0) rotate(0); }
+      40% { transform: translateY(-3px) rotate(-6deg); }
+      100% { transform: translateY(0) rotate(0); }
+    }
+    @keyframes wmGrin {
+      50% { d: path("M12 23.5c2 3.4 4.6 5 7.5 5s5.5-1.6 7.5-5"); }
+    }
+  }
+</style>

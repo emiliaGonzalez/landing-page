@@ -1,0 +1,83 @@
+---
+const items = [
+  { mesh: "amber", title: "Tablero de tareas", body: "Maneja tu cola de desarrollo fácil con un tablero estilo Trello.", icon: "board" },
+  { mesh: "lilac", title: "Cuota mensual fija", body: "¡Aquí no hay sorpresas! Pagas el mismo precio fijo cada mes.", icon: "lock" },
+  { mesh: "coral", title: "Entrega rápida", body: "Recibe tu desarrollo uno a la vez, en un par de días en promedio.", icon: "bolt" },
+  { mesh: "mint", title: "Calidad de primer nivel", body: "Calidad de desarrollo senior a tu alcance, cuando la necesites.", icon: "star" },
+  { mesh: "blue", title: "Flexible y escalable", body: "Sube o baja según necesites, y pausa o cancela cuando quieras.", icon: "sliders" },
+  { mesh: "iris", title: "Único y todo tuyo", body: "Cada desarrollo es hecho especialmente para ti y es 100% tuyo.", icon: "code" },
+];
+---
+<section class="ben section">
+  <div class="container">
+    <header class="ben__head">
+      <h2 class="display-2">Es del tipo <span class="serif">“ya no vas a querer&nbsp;volver”</span> de&nbsp;bueno</h2>
+      <p class="lead ben__sub">
+        Unlimited Code reemplaza a los freelancers poco confiables y a las agencias caras por una sola
+        cuota mensual fija, con desarrollos entregados tan rápido que no vas a querer ir a ningún otro lado.
+      </p>
+    </header>
+
+    <div class="ben__grid">
+      {items.map((it, i) => (
+        <article class="ben__item reveal" data-delay={(i % 3) + 1}>
+          <span class={`ben__tile ben__tile--${it.mesh}`} aria-hidden="true">
+            {it.icon === "board" && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16M15 4v16"/></svg>)}
+            {it.icon === "lock" && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>)}
+            {it.icon === "bolt" && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h7l-1 7 9-11h-7Z"/></svg>)}
+            {it.icon === "star" && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9Z"/></svg>)}
+            {it.icon === "sliders" && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h10M18 8h2M4 16h2M10 16h10"/><circle cx="16" cy="8" r="2.4"/><circle cx="8" cy="16" r="2.4"/></svg>)}
+            {it.icon === "code" && (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8-5 4 5 4M15 8l5 4-5 4"/></svg>)}
+          </span>
+          <h3 class="ben__title">{it.title}</h3>
+          <p class="ben__body">{it.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ben__head { margin-bottom: clamp(2.5rem, 5vh, 3.75rem); text-align: center; }
+  .ben__head h2 { max-width: 16ch; margin-inline: auto; }
+  .ben__sub { margin-top: 1.25rem; max-width: 52ch; margin-inline: auto; }
+
+  .ben__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.75rem, 3vw, 2.75rem) clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+  .ben__item { display: flex; flex-direction: column; }
+  .ben__tile {
+    width: clamp(96px, 12vw, 130px); aspect-ratio: 1;
+    border-radius: var(--r-tile);
+    display: grid; place-items: center;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  }
+  .ben__tile svg { width: 38%; height: 38%; transition: transform 0.35s var(--ease-out); }
+  .ben__item:hover .ben__tile { transform: translateY(-5px) scale(1.04); box-shadow: 0 24px 46px -18px rgba(0,0,0,0.34); }
+  .ben__item:hover .ben__tile svg { transform: scale(1.08); }
+  @media (prefers-reduced-motion: reduce) {
+    .ben__item:hover .ben__tile, .ben__item:hover .ben__tile svg { transform: none; }
+  }
+  .ben__tile { color: rgba(255,255,255,0.92); }
+  .ben__tile--amber { background: var(--mesh-amber); }
+  .ben__tile--lilac { background: var(--mesh-lilac); }
+  .ben__tile--coral { background: var(--mesh-coral); }
+  .ben__tile--mint { background: var(--mesh-mint); }
+  .ben__tile--blue { background: var(--mesh-blue); }
+  .ben__tile--iris { background: var(--mesh-iris); }
+
+  .ben__title { font-size: 1.4rem; letter-spacing: -0.025em; }
+  .ben__body { margin-top: 0.55rem; color: var(--ink-soft); font-weight: 500; max-width: 34ch; }
+
+  @media (max-width: 860px) { .ben__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) {
+    .ben__grid { grid-template-columns: 1fr; }
+    .ben__item { align-items: center; text-align: center; }
+    .ben__body { margin-inline: auto; }
+  }
+</style>

@@ -1,0 +1,80 @@
+---
+import Brandmark from "./Brandmark.astro";
+---
+<header class="nav" data-nav>
+  <div class="nav__inner container">
+    <div class="nav__bar">
+      <a class="nav__brand" href="#top" aria-label="Unlimited Code — inicio"><Brandmark /></a>
+
+      <nav class="nav__links" aria-label="Principal">
+        <a class="nav__pill" href="mailto:hola@unlimitedcode.mx">Iniciar sesión</a>
+        <a class="nav__pill" href="#contacto">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z"/></svg>
+          Agenda una llamada
+        </a>
+        <a class="nav__pill nav__pill--dark" href="#precios">Ver precios</a>
+      </nav>
+
+      <button class="nav__burger" data-burger aria-expanded="false" aria-controls="nav-sheet" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav__sheet" id="nav-sheet" data-sheet>
+    <a href="#como-funciona" data-sheet-link>Cómo funciona</a>
+    <a href="#trabajo" data-sheet-link>Trabajo</a>
+    <a href="#precios" data-sheet-link>Precios</a>
+    <a href="#faq" data-sheet-link>FAQ</a>
+    <a href="mailto:hola@unlimitedcode.mx" data-sheet-link>Iniciar sesión</a>
+    <a class="btn btn--accent btn--block" href="#contacto" data-sheet-link>Agenda una llamada</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: relative;
+    padding-block: clamp(1.4rem, 3vh, 2.25rem);
+    background: transparent;
+  }
+  /* Same grid as the hero so the buttons stop at the card's left edge */
+  .nav__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 390px); gap: clamp(1.5rem, 4vw, 3rem); }
+  .nav__bar { grid-column: 1; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+
+  .nav__links { display: flex; align-items: center; gap: 0.6rem; }
+  .nav__pill {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 8px 16px; min-height: 40px;
+    border-radius: var(--r-btn);
+    background: var(--card); border: 1px solid var(--line-soft);
+    font-weight: 500; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap;
+    transition: transform 0.16s var(--ease-out), box-shadow 0.2s var(--ease-out), background-color 0.18s var(--ease-out);
+  }
+  .nav__pill:hover { transform: translateY(-1px); box-shadow: var(--shadow-card); }
+  .nav__pill--dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .nav__burger {
+    display: none; flex-direction: column; gap: 5px;
+    width: 46px; height: 46px; border-radius: 12px;
+    border: 1px solid var(--line); place-content: center; align-items: center;
+    background: var(--card);
+  }
+  .nav__burger span { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform 0.24s var(--ease-out), opacity 0.18s var(--ease-out); }
+  .nav[data-open] .nav__burger span:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
+  .nav[data-open] .nav__burger span:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
+
+  .nav__sheet { display: none; flex-direction: column; gap: 0.3rem; padding: 0.75rem var(--pad-x) 1.4rem; }
+  .nav__sheet a:not(.btn) { padding: 0.8rem 0.5rem; border-radius: 12px; font-weight: 600; font-size: 1.3rem; letter-spacing: -0.025em; }
+  .nav__sheet a:not(.btn):hover { background: rgba(0,0,0,0.04); }
+  .nav__sheet .btn { margin-top: 0.5rem; }
+
+  @media (max-width: 900px) {
+    .nav__inner { display: block; }
+  }
+  @media (max-width: 860px) {
+    .nav__links { display: none; }
+    .nav__burger { display: flex; }
+    .nav[data-open] .nav__sheet { display: flex; }
+    .nav[data-open] { background: var(--bg); border-bottom-color: var(--line-soft); }
+  }
+</style>

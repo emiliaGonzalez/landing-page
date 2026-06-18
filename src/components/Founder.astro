@@ -1,0 +1,36 @@
+---
+---
+<section class="founder section">
+  <div class="container">
+    <div class="founder__box">
+      <p class="founder__copy">
+        Lanzada en 2017, Unlimited Code <span class="serif">reimaginó</span> el desarrollo a la medida
+        con su modelo de suscripción. Hasta hoy, la opera enteramente
+        <a class="founder__name" href="mailto:hola@unlimitedcode.mx">Emilia González</a>. Unlimited Code
+        no contrata desarrolladores extra ni subcontrata el trabajo — en vez de eso, se enfoca en entregar
+        calidad de primer nivel a un número limitado de clientes a la vez.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .founder__box {
+    max-width: 720px; margin-inline: auto;
+    border: 1px solid var(--line); border-radius: var(--r-card-lg);
+    padding: clamp(2.25rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+  }
+  .founder__copy {
+    max-width: 560px; margin-inline: auto;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  .founder__copy .serif { color: var(--ink); }
+  .founder__name { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color 0.18s var(--ease-out); }
+  .founder__name:hover { color: var(--accent); }
+</style>

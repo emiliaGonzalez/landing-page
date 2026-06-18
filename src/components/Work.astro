@@ -1,0 +1,133 @@
+---
+const tags = [
+  "Sitios web", "Ecommerce", "CRMs", "Webapps", "Landing pages",
+  "Automatizaciones", "Integraciones", "Dashboards", "Apps móviles",
+  "APIs", "Chatbots", "Agentes de IA",
+];
+---
+<section class="work section" id="trabajo">
+  <div class="container work__grid">
+    <!-- LEFT: Trabajo -->
+    <article class="wcard wcard--work reveal">
+      <div class="wstage" aria-hidden="true">
+        <!-- tablet 1: storefront -->
+        <div class="prev prev--a">
+          <div class="prev__bar"><span></span><span></span><span></span></div>
+          <div class="prev__hero prev__hero--coral"><span class="prev__chip">Café de Altura</span><span class="prev__btn">Comprar</span></div>
+          <div class="prev__rows"><i></i><i class="w60"></i><div class="prev__cards"><b></b><b></b><b></b></div></div>
+        </div>
+        <!-- tablet 2: dashboard -->
+        <div class="prev prev--b">
+          <div class="prev__bar"><span></span><span></span><span></span></div>
+          <div class="prev__hero prev__hero--iris"><span class="prev__chip">Panel de ventas</span></div>
+          <div class="prev__rows"><div class="prev__stats"><u></u><u></u></div><div class="prev__chart"><s style="--h:50%"></s><s style="--h:75%"></s><s class="on" style="--h:95%"></s><s style="--h:60%"></s></div></div>
+        </div>
+      </div>
+
+      <div class="wproof">
+        <div class="wproof__item">
+          <span class="wproof__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h7l-1 7 9-11h-7Z"/></svg></span>
+          <strong>Entrega en 48h</strong>
+          <span class="wproof__sub">Promedio real, una a la vez</span>
+        </div>
+        <div class="wproof__item">
+          <span class="wproof__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8-5 4 5 4M15 8l5 4-5 4"/></svg></span>
+          <strong>Código 100% tuyo</strong>
+          <span class="wproof__sub">Repos, accesos y propiedad</span>
+        </div>
+      </div>
+
+      <div class="wcard__foot">
+        <h3 class="wcard__title">Trabajo reciente</h3>
+        <p class="wcard__sub">Equipos que ya construyen con Unlimited Code — del tipo “esto sí se ve profesional” de bueno.</p>
+        <a class="btn" href="#contacto">Agenda una llamada</a>
+      </div>
+    </article>
+
+    <!-- RIGHT: Servicios -->
+    <article class="wcard wcard--svc reveal" data-delay="1">
+      <span class="bigsmile bigsmile--pink" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#2a0a18" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><circle cx="45" cy="50" r="3.5" fill="#2a0a18" stroke="none"/><circle cx="75" cy="50" r="3.5" fill="#2a0a18" stroke="none"/><path d="M40 70c5 7 12 11 20 11s15-4 20-11"/></svg></span>
+      <span class="bigsmile bigsmile--blue" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><circle cx="45" cy="50" r="3.5" fill="#fff" stroke="none"/><circle cx="75" cy="50" r="3.5" fill="#fff" stroke="none"/><path d="M40 70c5 7 12 11 20 11s15-4 20-11"/></svg></span>
+
+      <div class="wtags">
+        {tags.map((t) => <span class="wtag">{t}</span>)}
+        <span class="wtag wtag--accent">+ más</span>
+      </div>
+
+      <div class="wcard__foot">
+        <h3 class="wcard__title">Apps, sitios,<br />sistemas y más</h3>
+        <p class="wcard__sub">Todo lo que necesitas bajo un mismo techo.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .work__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch; }
+  .wcard {
+    position: relative; overflow: hidden;
+    background: var(--card); border-radius: var(--r-card-lg);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    display: flex; flex-direction: column;
+    min-height: 560px;
+    transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  }
+  .wcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  @media (prefers-reduced-motion: reduce) { .wcard:hover { transform: none; } }
+  .wcard__foot { margin-top: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+  .wcard__title { font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.65rem); letter-spacing: -0.03em; }
+  .wcard__sub { color: var(--ink-soft); font-weight: 500; font-size: 1.02rem; max-width: 34ch; }
+  .wcard__foot .btn { margin-top: 0.4rem; }
+
+  /* LEFT — device previews */
+  .wstage { position: relative; height: clamp(200px, 26vw, 280px); margin: -0.5rem -0.5rem 1.25rem; }
+  .prev {
+    position: absolute; width: 64%;
+    background: var(--card); border: 1px solid var(--line-soft);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 50px -22px rgba(0,0,0,0.4);
+  }
+  .prev--a { left: 2%; top: 14%; rotate: -7deg; z-index: 2; }
+  .prev--b { right: 2%; top: 6%; rotate: 6deg; z-index: 1; }
+  .prev__bar { display: flex; gap: 4px; padding: 0.5rem 0.6rem; background: #f3eff0; }
+  .prev__bar span { width: 7px; height: 7px; border-radius: 999px; background: rgba(0,0,0,0.16); }
+  .prev__hero { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 0.7rem; }
+  .prev__hero--coral { background: var(--mesh-coral); }
+  .prev__hero--iris { background: var(--mesh-iris); }
+  .prev__chip { font-size: 0.66rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+  .prev__btn { font-size: 0.6rem; font-weight: 800; color: var(--ink); background: #fff; padding: 0.22rem 0.5rem; border-radius: 999px; }
+  .prev__rows { padding: 0.6rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .prev__rows i { display: block; height: 7px; border-radius: 999px; background: rgba(0,0,0,0.1); }
+  .prev__rows i.w60 { width: 60%; }
+  .prev__cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.3rem; margin-top: 0.1rem; }
+  .prev__cards b { height: 26px; border-radius: 6px; background: #f1edee; }
+  .prev__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; }
+  .prev__stats u { height: 22px; border-radius: 6px; background: #f1edee; }
+  .prev__chart { display: flex; align-items: flex-end; gap: 0.25rem; height: 30px; }
+  .prev__chart s { flex: 1; height: var(--h); border-radius: 3px; background: #e2dcdd; }
+  .prev__chart s.on { background: var(--accent); }
+
+  .wproof { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 1.5rem; }
+  .wproof__item { background: #f5f1f2; border: 1px solid var(--line-soft); border-radius: 14px; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
+  .wproof__ic { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--card); color: var(--accent); margin-bottom: 0.3rem; }
+  .wproof__ic svg { width: 17px; height: 17px; }
+  .wproof__item strong { font-size: 16px; letter-spacing: -0.01em; }
+  .wproof__sub { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+
+  /* RIGHT — services */
+  .wcard--svc { justify-content: space-between; gap: 1.5rem; }
+  .bigsmile { position: absolute; border-radius: 999px; display: grid; place-items: center; z-index: 0; }
+  .bigsmile svg { width: 58%; height: 58%; }
+  .bigsmile--pink { width: 150px; height: 150px; background: #ff3ea5; top: -46px; left: -40px; }
+  .bigsmile--blue { width: 130px; height: 130px; background: #2f4bff; top: 44%; right: -54px; }
+  .wtags { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-content: center; flex: 1; padding: 1rem 0; }
+  .wtag { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 0.55rem 1rem; font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; box-shadow: var(--shadow-sm); }
+  .wtag--accent { background: var(--accent); color: #fff; border-color: transparent; }
+
+  @media (max-width: 820px) {
+    .work__grid { grid-template-columns: 1fr; }
+    .wcard { min-height: 0; }
+    .wcard--svc { min-height: 480px; }
+  }
+</style>

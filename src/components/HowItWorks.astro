@@ -1,0 +1,167 @@
+---
+const tagsA = ["Sitios web", "Ecommerce", "CRMs", "Webapps", "Landing pages"];
+const tagsB = ["Integraciones", "Dashboards", "Apps móviles", "Chatbots", "APIs"];
+const tagsC = ["Automatizaciones", "Agentes de IA", "Facturación", "Inventario", "Portales"];
+---
+<section class="how section" id="como-funciona">
+  <div class="container">
+    <h2 class="display-2 how__head">
+      Así&nbsp;se&nbsp;<span class="serif">debió</span> haber hecho el desarrollo desde el principio
+    </h2>
+
+    <div class="how__grid">
+      <!-- Suscríbete -->
+      <article class="step on-grad reveal" data-delay="1">
+        <div class="step__bg step__bg--amber" aria-hidden="true"></div>
+        <div class="step__art" aria-hidden="true">
+          <div class="mock-plan">
+            <div class="mock-plan__row"><span>Entrega · 48h</span><span>2 usuarios</span></div>
+            <div class="mock-plan__row"><span>Código 100% tuyo</span></div>
+            <div class="mock-plan__row mock-plan__row--mute"><span>Pausa cuando quieras</span></div>
+            <div class="mock-plan__btns"><span class="mock-plan__b mock-plan__b--dark">Únete hoy</span><span class="mock-plan__b">Llamada</span></div>
+          </div>
+        </div>
+        <div class="step__body">
+          <h3 class="step__title">Suscríbete</h3>
+          <p class="step__desc">Suscríbete a un plan y pide todo el desarrollo que quieras.</p>
+        </div>
+      </article>
+
+      <!-- Pide -->
+      <article class="step on-grad reveal" data-delay="2">
+        <div class="step__bg step__bg--blue" aria-hidden="true"></div>
+        <div class="step__art step__art--tags" aria-hidden="true">
+          <div class="marquee" style="--mq-dur:24s">
+            <div class="marquee__track">
+              {tagsA.map((t) => <span class="floattag">{t}</span>)}
+              {tagsA.map((t) => <span class="floattag">{t}</span>)}
+              {tagsA.map((t) => <span class="floattag">{t}</span>)}
+              {tagsA.map((t) => <span class="floattag">{t}</span>)}
+            </div>
+          </div>
+          <div class="marquee marquee--rev" style="--mq-dur:30s">
+            <div class="marquee__track">
+              {tagsB.map((t) => <span class="floattag">{t}</span>)}
+              {tagsB.map((t) => <span class="floattag">{t}</span>)}
+              {tagsB.map((t) => <span class="floattag">{t}</span>)}
+              {tagsB.map((t) => <span class="floattag">{t}</span>)}
+            </div>
+          </div>
+          <div class="marquee" style="--mq-dur:27s">
+            <div class="marquee__track">
+              {tagsC.map((t) => <span class="floattag">{t}</span>)}
+              {tagsC.map((t) => <span class="floattag">{t}</span>)}
+              {tagsC.map((t) => <span class="floattag">{t}</span>)}
+              {tagsC.map((t) => <span class="floattag">{t}</span>)}
+            </div>
+          </div>
+        </div>
+        <div class="step__body">
+          <h3 class="step__title">Pide</h3>
+          <p class="step__desc">Pide lo que sea, desde una tienda en línea hasta un CRM.</p>
+        </div>
+      </article>
+
+      <!-- Recibe -->
+      <article class="step on-grad reveal" data-delay="3">
+        <div class="step__bg step__bg--coral" aria-hidden="true"></div>
+        <div class="step__art" aria-hidden="true">
+          <div class="mock-ship">
+            <div class="mock-ship__bar"><span></span><span></span><span></span></div>
+            <div class="mock-ship__rows">
+              <div class="mock-ship__rowi"></div>
+              <div class="mock-ship__rowi mock-ship__rowi--w"></div>
+              <div class="mock-ship__grid"><span></span><span></span><span></span></div>
+            </div>
+            <span class="mock-ship__badge">✓ Entregado</span>
+          </div>
+        </div>
+        <div class="step__body">
+          <h3 class="step__title">Recibe</h3>
+          <p class="step__desc">Recibe tu desarrollo en pocos días hábiles en promedio.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how__head { margin-bottom: clamp(2.25rem, 4vh, 3.25rem); text-align: center; }
+  .how__head h2 { max-width: 20ch; margin-inline: auto; }
+
+  .how__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.9rem, 1.6vw, 1.25rem); }
+
+  .step {
+    position: relative; isolation: isolate;
+    border-radius: var(--r-card-lg);
+    min-height: clamp(420px, 50vh, 520px);
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+    display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
+    overflow: hidden; color: #fff;
+    box-shadow: var(--shadow-card);
+  }
+  /* Card entrance — bigger travel, longer/softer ease, wider stagger between the three */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .step.reveal { transform: translateY(110px) scale(0.9); transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+    .js .step.reveal.is-in { transform: none; }
+    .js .step.reveal[data-delay="1"] { transition-delay: 0s; }
+    .js .step.reveal[data-delay="2"] { transition-delay: 0.22s; }
+    .js .step.reveal[data-delay="3"] { transition-delay: 0.44s; }
+  }
+  .step__bg { position: absolute; inset: 0; z-index: -1; }
+  .step__bg--amber { background: var(--mesh-amber); }
+  .step__bg--blue { background: var(--mesh-blue); }
+  .step__bg--coral { background: var(--mesh-coral); }
+
+  .step__art { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
+  .step__body { display: flex; flex-direction: column; gap: 0.5rem; }
+  .step__title { color: #fff; font-size: 24px; line-height: 1.1; letter-spacing: -0.03em; }
+  .step__desc { color: rgba(255,255,255,0.9); font-weight: 400; font-size: 16px; line-height: 1.25; max-width: 26ch; }
+
+  /* Suscríbete mock */
+  .mock-plan {
+    width: 100%; max-width: 250px;
+    background: rgba(255,255,255,0.92); color: var(--ink);
+    border-radius: 16px; padding: 0.9rem; box-shadow: 0 20px 40px -18px rgba(0,0,0,0.4);
+    display: flex; flex-direction: column; gap: 0.5rem; rotate: -3deg;
+  }
+  .mock-plan__row { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; background: rgba(0,0,0,0.04); border-radius: 8px; padding: 0.5rem 0.65rem; }
+  .mock-plan__row--mute { color: var(--ink-soft); }
+  .mock-plan__btns { display: flex; gap: 0.4rem; margin-top: 0.2rem; }
+  .mock-plan__b { flex: 1; text-align: center; font-size: 0.78rem; font-weight: 700; padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.06); }
+  .mock-plan__b--dark { background: var(--accent); color: #fff; }
+
+  /* Pide tags — bleed past the card padding so the pills reach the card edges */
+  .step__art--tags { flex-direction: column; gap: 0.6rem; align-self: stretch; justify-content: center; margin-inline: calc(clamp(1.5rem, 2.4vw, 2rem) * -1); }
+  .marquee--rev .marquee__track { animation-direction: reverse; }
+  .floattag {
+    display: inline-flex; align-items: center; flex: none;
+    margin-right: 0.6rem; /* spacing lives on the item → seamless loop, no flex-gap seam */
+    padding: 0.6rem 1rem; border-radius: var(--r-pill);
+    background: rgba(255,255,255,0.95); color: #1a1340;
+    font-weight: 600; font-size: 0.92rem; white-space: nowrap;
+    box-shadow: 0 8px 20px -10px rgba(0,0,0,0.45);
+  }
+
+  /* Recibe mock */
+  .mock-ship {
+    position: relative;
+    width: 100%; max-width: 250px;
+    background: rgba(255,255,255,0.95); color: var(--ink);
+    border-radius: 14px; overflow: hidden; box-shadow: 0 20px 40px -18px rgba(0,0,0,0.4);
+    rotate: 3deg;
+  }
+  .mock-ship__bar { display: flex; gap: 5px; padding: 0.6rem 0.75rem; background: rgba(0,0,0,0.05); }
+  .mock-ship__bar span { width: 8px; height: 8px; border-radius: 999px; background: rgba(0,0,0,0.18); }
+  .mock-ship__rows { padding: 0.85rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .mock-ship__rowi { height: 12px; border-radius: 6px; background: rgba(0,0,0,0.1); }
+  .mock-ship__rowi--w { width: 60%; }
+  .mock-ship__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.45rem; margin-top: 0.2rem; }
+  .mock-ship__grid span { height: 38px; border-radius: 8px; background: var(--mesh-coral); }
+  .mock-ship__badge { position: absolute; bottom: 0.6rem; right: 0.6rem; background: var(--ink); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.35rem 0.6rem; border-radius: 999px; }
+
+  @media (max-width: 860px) {
+    .how__grid { grid-template-columns: 1fr; }
+    .step { min-height: 360px; }
+  }
+</style>

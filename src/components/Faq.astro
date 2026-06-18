@@ -1,0 +1,54 @@
+---
+const faqs = [
+  { q: "¿Qué tan rápido recibo mi desarrollo?", a: "En promedio, la mayoría de las solicitudes se completan en pocos días hábiles — muchas en 48 horas. Las más complejas pueden tardar un poco más, pero siempre vas viendo avances." },
+  { q: "¿Cómo funciona el onboarding?", a: "Te suscribes y te doy de alta en tu propio tablero, normalmente en menos de una hora. Aceptas la invitación y ya estás listo para pedir." },
+  { q: "¿Quién desarrolla?", a: "Unlimited Code es una agencia de una sola persona, operada por Emilia González, la fundadora. No empleo a otros desarrolladores ni subcontrato. Trabajas directo conmigo de principio a fin." },
+  { q: "¿Hay límite de solicitudes?", a: "Una vez suscrito, agregas todas las solicitudes que quieras a tu cola. Se entregan una por una, así cada cosa recibe toda la atención que merece." },
+  { q: "¿Cómo funciona la pausa?", a: "Los ciclos son de 31 días. Si usas el servicio 21 días y pausas, te quedan 10 días para usar cuando quieras en el futuro. Lo que pagaste no se pierde." },
+  { q: "¿Cómo manejan los proyectos grandes?", a: "Los proyectos grandes los partimos de mi lado — sitios completos, sistemas, apps. Recibes una cantidad razonable de trabajo cada 24–48 horas hasta terminar todo." },
+  { q: "¿Con qué stack desarrollan?", a: "Web y backend con React, Next.js, Node, Python y Java; datos con Supabase y Postgres; móvil con React Native; y automatizaciones e IA con los últimos modelos (Claude Opus, Sonnet y Fable, GPT, Gemini y Grok). Elijo la herramienta correcta para cada problema, no al revés." },
+  { q: "¿Y si no me gusta el desarrollo?", a: "¡No hay bronca! Lo seguimos revisando hasta que quedes 100% satisfecho." },
+  { q: "¿Hay trabajo que no cubran?", a: "Por ahora no tomo desarrollo de hardware/firmware, juegos AAA, ni migraciones de infraestructura a gran escala (data centers, on-prem masivo). Si tu proyecto raya en eso, te lo digo de frente antes de que pagues." },
+  { q: "¿Puedo usarlo solo un mes?", a: "Claro. Sea un mes o un año, tú decides. Regresa cuando tengas nuevas necesidades de desarrollo." },
+  { q: "¿Hay reembolsos?", a: "Por la naturaleza del trabajo, no se emiten reembolsos después de la primera semana, ni por trabajo ya completado. Dentro de la primera semana aplica la garantía del 75%." },
+];
+---
+<section class="faq section" id="faq">
+  <div class="container">
+    <h2 class="display-2 faq__title">Preguntas <span class="serif">frecuentes</span></h2>
+    <div class="faq__list">
+      {faqs.map((f, i) => (
+        <details class="qa" name="faq" open={i === 0}>
+          <summary class="qa__q">
+            <span>{f.q}</span>
+            <span class="qa__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </summary>
+          <div class="qa__a"><p>{f.a}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__title { margin-bottom: clamp(2rem, 4vh, 3rem); text-align: center; }
+  .faq__list { max-width: 820px; margin-inline: auto; }
+  .qa { border-top: 1px solid var(--line); }
+  .qa:last-child { border-bottom: 1px solid var(--line); }
+  .qa__q {
+    list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    padding: 1.15rem 0.25rem; cursor: pointer;
+    font-weight: 500; font-size: 18px; letter-spacing: -0.02em; color: var(--ink);
+    transition: color 0.18s var(--ease-out);
+  }
+  .qa__q::-webkit-details-marker { display: none; }
+  .qa__q:hover { color: var(--accent); }
+  .qa__chev { flex-shrink: 0; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 999px; background: rgba(0,0,0,0.05); color: var(--ink); transition: transform 0.28s var(--ease-out), background-color 0.2s var(--ease-out), color 0.2s var(--ease-out); }
+  .qa__chev svg { width: 19px; height: 19px; }
+  .qa[open] .qa__chev { transform: rotate(180deg); background: var(--accent); color: #fff; }
+  .qa__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s var(--ease-out); }
+  .qa[open] .qa__a { grid-template-rows: 1fr; }
+  .qa__a > p { overflow: hidden; color: var(--ink-soft); font-weight: 400; font-size: 16px; max-width: 70ch; line-height: 1.45; }
+  .qa[open] .qa__a > p { padding-bottom: 1.35rem; }
+  @media (prefers-reduced-motion: reduce) { .qa__a { transition: none; } }
+</style>

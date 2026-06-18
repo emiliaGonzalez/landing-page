@@ -1,0 +1,58 @@
+---
+// Clientes reales de Unlimited Code. No se inventan frases atribuidas a ellos:
+// cuando manden una reseña en sus palabras, se agrega aquí tal cual.
+const clients = [
+  { name: "Walmart", tail: "eCommerce México" },
+  { name: "Hicap", tail: null },
+  { name: "Lazo", tail: null },
+];
+---
+<section class="testi section">
+  <div class="container">
+    <header class="testi__head">
+      <p class="testi__eyebrow"><span class="testi__dot"></span>Confían en Unlimited Code</p>
+      <h2 class="display-2">Equipos que <span class="serif">no se conforman</span> con menos</h2>
+    </header>
+
+    <div class="testi__clients reveal" data-delay="1">
+      {clients.map((c) => (
+        <span class="client">
+          <span class="client__name">{c.name}</span>
+          {c.tail && <span class="client__tail">{c.tail}</span>}
+        </span>
+      ))}
+    </div>
+
+    <div class="testi__foot">
+      <p class="testi__note">
+        Walmart eCommerce México, Hicap y Lazo ya construyen con Unlimited Code. Las reseñas en sus
+        palabras llegan aquí en cuanto las suelten — palabra por palabra, sin inventar nada.
+      </p>
+      <a class="btn btn--accent" href="#contacto">¿Quieres ser el siguiente?</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi__head { max-width: 30ch; margin-bottom: clamp(2.5rem, 5vh, 3.5rem); }
+  .testi__eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--ink-soft); font-size: 1rem; margin-bottom: 1.1rem; }
+  .testi__dot { width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--accent); }
+
+  .testi__clients {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding-block: clamp(1.75rem, 4vh, 2.75rem);
+    border-block: 1px solid var(--line);
+  }
+  .client { display: inline-flex; align-items: baseline; gap: 0.5rem; opacity: 0.5; transition: opacity 0.22s var(--ease-out); }
+  .client:hover { opacity: 1; }
+  .client__name { font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.3rem); letter-spacing: -0.04em; color: var(--ink); }
+  .client__tail { font-weight: 600; font-size: clamp(0.85rem, 0.7rem + 0.5vw, 1.05rem); letter-spacing: -0.02em; color: var(--ink-soft); }
+
+  .testi__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: clamp(2rem, 4vh, 2.75rem); }
+  .testi__note { color: var(--ink-soft); font-weight: 500; font-size: 1.05rem; line-height: 1.5; max-width: 56ch; }
+
+  @media (max-width: 640px) {
+    .testi__foot { flex-direction: column; align-items: flex-start; }
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+// Clientes reales en gris, en un marquee continuo (motion firma de un "trusted by").
+// Heights tuned OPTICALLY (per logo's visual weight) — iterated against a vision check.
+const logos = [
+  { src: "/logos/scotiabank.svg", alt: "Scotiabank", h: 17, dy: 3 },
+  { src: "/logos/elektra.svg", alt: "Elektra", h: 19, dy: 2 },
+  { src: "/logos/lazo.svg", alt: "Lazo", h: 23, dy: 2 },
+  { src: "/logos/hicap.png", alt: "Hicap", h: 20, dy: 3 },
+  { src: "/logos/nixtla.svg", alt: "Nixtla", h: 14, dy: 5 },
+  { src: "/logos/alephrisk.png", alt: "AlephRisk", h: 24, dy: 1 },
+  { src: "/logos/reliv.png", alt: "Reliv", h: 28, dy: -5 },
+];
+// Six identical copies → each half (3 copies) is always wider than the viewport, so translateX(-50%)
+// loops with no seam/gap regardless of logo widths. Only the first copy is read by screen readers.
+const COPIES = [0, 1, 2, 3, 4, 5];
+---
+<section class="clients" aria-label="Clientes que confían en Unlimited Code">
+  <div class="container clients__wrap">
+    <div class="marquee clients__mq" style="--mq-dur:48s">
+    <div class="marquee__track">
+      {COPIES.map((c) => (
+        <span class="cset" aria-hidden={c !== 0}>
+          <span class="clogo clogo--lockup">
+            <img src="/logos/walmart-spark.svg" alt={c === 0 ? "Walmart" : ""} width="26" height="26" />
+            <span class="clogo__wm">Walmart</span>
+          </span>
+          {logos.map((l) => (
+            <img class="clogo" src={l.src} alt={c === 0 ? l.alt : ""} style={`height:${l.h}px${l.dy ? `;transform:translateY(${l.dy}px)` : ""}`} />
+          ))}
+        </span>
+      ))}
+    </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients { padding-block: clamp(2.5rem, 6vh, 4rem); }
+  .clients__mq { -webkit-mask-image: none; mask-image: none; }
+  .cset { display: contents; }
+
+  /* All logos collapse to a black silhouette + one opacity → every logo the exact same gray */
+  .clogo {
+    width: auto; flex: none;
+    margin-right: clamp(2.25rem, 5vw, 4rem); /* spacing on the item → seamless loop */
+    filter: grayscale(1) brightness(0);
+    opacity: 0.42;
+    transition: opacity 0.22s var(--ease-out);
+  }
+  .clogo:hover { opacity: 0.7; }
+
+  .clogo--lockup {
+    display: inline-flex; align-items: center; gap: 0.55rem; flex: none;
+    margin-right: clamp(2.25rem, 5vw, 4rem);
+    transform: translateY(-4px); /* optical: lift the lockup onto the row centerline */
+    opacity: 0.42; transition: opacity 0.22s var(--ease-out);
+  }
+  .clogo--lockup:hover { opacity: 0.7; }
+  .clogo--lockup img { height: 24px; width: auto; margin: 0; filter: grayscale(1) brightness(0); }
+  .clogo__wm { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.04em; color: #000; line-height: 1; white-space: nowrap; }
+
+  /* Reduced motion: no scroll — show one centered, wrapped row */
+  @media (prefers-reduced-motion: reduce) {
+    .clients__mq { overflow: visible; }
+    .clients__mq .marquee__track { width: auto; flex-wrap: wrap; justify-content: center; align-items: center; row-gap: 1.75rem; }
+    .clients .cset[aria-hidden="true"] { display: none; }
+    .clogo, .clogo--lockup { margin-right: clamp(1.75rem, 4vw, 3.5rem); }
+  }
+</style>
