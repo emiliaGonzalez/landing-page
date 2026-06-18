@@ -33,7 +33,7 @@ const smileys = [
     <div class="hero__card on-grad reveal" data-delay="1">
       <div class="hero__card-bg" aria-hidden="true"></div>
 
-      <div class="memcard" aria-hidden="true">
+      <div class="memcard" data-confetti aria-hidden="true">
         <div class="memcard__grid">
           {smileys.map((s) => (
             <span class={`memq memq--${s.tone}`}>
@@ -55,7 +55,7 @@ const smileys = [
       </div>
       <a class="hero__card-cta" href="#precios">Ver precios</a>
       <a class="hero__book" href="#contacto">
-        <span class="hero__book-av" aria-hidden="true">
+        <span class="hero__book-av" data-confetti aria-hidden="true">
           <svg viewBox="0 0 40 40" fill="none" stroke="#1a1407" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="17" r="1.4" fill="#1a1407" stroke="none"/><circle cx="25" cy="17" r="1.4" fill="#1a1407" stroke="none"/><path d="M14 24c1.8 2.2 3.8 3.4 6 3.4s4.2-1.2 6-3.4"/></svg>
         </span>
         <span class="hero__book-txt"><strong>Agenda una llamada de 15 min</strong><span>Resérvala ahora</span></span>

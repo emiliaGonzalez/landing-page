@@ -4,7 +4,7 @@ const { tone = "ink" } = Astro.props;
 const cls = tone === "light" ? "wm wm--light" : "wm";
 ---
 <span class={cls}>
-  <span class="wm__mark" aria-hidden="true">
+  <span class="wm__mark" data-confetti aria-hidden="true">
     <svg viewBox="0 0 40 40" width="30" height="30">
       <rect class="wm__bg" x="1" y="1" width="38" height="38" rx="11" />
       <g class="wm__face">

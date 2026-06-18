@@ -130,8 +130,12 @@ import FooterCta from "../components/FooterCta.astro";
   document.querySelectorAll<HTMLElement>("[data-confetti]").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      const me = e as MouseEvent;
       const r = el.getBoundingClientRect();
-      confettiBurst(r.left + r.width / 2, r.top + r.height / 2);
+      const x = me.clientX || r.left + r.width / 2;
+      const y = me.clientY || r.top + r.height / 2;
+      confettiBurst(x, y);
     });
   });
 </script>

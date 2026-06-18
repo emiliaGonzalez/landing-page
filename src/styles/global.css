@@ -250,6 +250,8 @@ h1, h2, h3, h4 {
 @media (prefers-reduced-motion: no-preference) {
   @keyframes ucWink { 0%, 100% { transform: scaleY(1); } 42%, 58% { transform: scaleY(0.1); } }
 }
+/* every brand smiley is a confetti popper */
+[data-confetti] { cursor: pointer; }
 
 /* Marquee — seamless: spacing via item margin (not flex gap) so translateX(-50%) loops with no seam/gap */
 .marquee { overflow: hidden; width: 100%; max-width: 100%; min-width: 0; }
