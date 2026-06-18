@@ -40,4 +40,10 @@
   .founder__by strong { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--ink); transition: color 0.18s var(--ease-out); }
   .founder__by span { color: var(--ink-soft); font-size: 0.92rem; font-weight: 500; }
   .founder__sign:hover .founder__by strong { color: var(--accent); }
+
+  /* interactive feedback — the brand mark gives a small happy hop on hover (matches Brandmark) */
+  @media (prefers-reduced-motion: no-preference) {
+    .founder__avatar svg { transition: transform 0.4s var(--ease-out); }
+    .founder__sign:hover .founder__avatar svg { transform: translateY(-3px) rotate(-6deg); }
+  }
 </style>
