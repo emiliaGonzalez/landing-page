@@ -8,7 +8,6 @@
   --card: #ffffff;
   --ink: #000000;
   --ink-soft: #6e6a6c;
-  --ink-mute: #9a9498;
   --accent: #ff5a00;
   --accent-ink: #ffffff;
   --abyss: #000000;
@@ -16,8 +15,9 @@
   --on-abyss: #ffffff;
   --on-abyss-soft: #a8a4a6;
 
-  --line: rgba(0, 0, 0, 0.12);
-  --line-soft: rgba(0, 0, 0, 0.07);
+  /* dividers tinted toward the brand plum, not generic black */
+  --line: rgba(58, 26, 48, 0.13);
+  --line-soft: rgba(58, 26, 48, 0.08);
   --line-abyss: rgba(255, 255, 255, 0.14);
   --line-abyss-soft: rgba(255, 255, 255, 0.08);
 
@@ -130,7 +130,13 @@ html {
 }
 
 body {
-  background: var(--bg);
+  /* Depth for the flat mauve field — a faint wash of the brand's own hues
+     (accent-warm from the top, iris-mauve from the upper right). No new colors. */
+  background:
+    radial-gradient(125% 85% at 50% -12%, rgba(255, 110, 40, 0.05), transparent 55%),
+    radial-gradient(95% 70% at 102% 4%, rgba(180, 90, 255, 0.05), transparent 52%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
   font-weight: 400;
