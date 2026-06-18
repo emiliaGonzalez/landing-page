@@ -10,18 +10,19 @@ const tags = [
     <!-- LEFT: Trabajo -->
     <article class="wcard wcard--work reveal">
       <div class="wstage" aria-hidden="true">
-        <!-- tablet 1: Lazo — contratos -->
-        <div class="prev prev--a">
-          <div class="prev__bar"><span></span><span></span><span></span></div>
-          <div class="prev__hero prev__hero--coral"><span class="prev__chip">Lazo</span><span class="prev__btn">Firmar</span></div>
-          <div class="prev__rows"><i></i><i class="w60"></i><div class="prev__cards"><b></b><b></b><b></b></div></div>
-        </div>
-        <!-- tablet 2: Hicap — panel -->
-        <div class="prev prev--b">
-          <div class="prev__bar"><span></span><span></span><span></span></div>
-          <div class="prev__hero prev__hero--iris"><span class="prev__chip">Hicap</span></div>
-          <div class="prev__rows"><div class="prev__stats"><u></u><u></u></div><div class="prev__chart"><s style="--h:50%"></s><s style="--h:75%"></s><s class="on" style="--h:95%"></s><s style="--h:60%"></s></div></div>
-        </div>
+        <!-- Real client work — live captures -->
+        <figure class="shot shot--c">
+          <span class="shot__bar"><i></i><i></i><i></i></span>
+          <img src="/work/nixtla.png" alt="" loading="lazy" width="1400" height="1166" />
+        </figure>
+        <figure class="shot shot--b">
+          <span class="shot__bar"><i></i><i></i><i></i></span>
+          <img src="/work/lazo.png" alt="" loading="lazy" width="1400" height="1166" />
+        </figure>
+        <figure class="shot shot--a">
+          <span class="shot__bar"><i></i><i></i><i></i></span>
+          <img src="/work/hicap.png" alt="" loading="lazy" width="1400" height="1166" />
+        </figure>
       </div>
 
       <div class="wproof">
@@ -80,33 +81,25 @@ const tags = [
   .wcard__sub { color: var(--ink-soft); font-weight: 500; font-size: 1.02rem; max-width: 34ch; }
   .wcard__foot .btn { margin-top: 0.4rem; }
 
-  /* LEFT — device previews */
-  .wstage { position: relative; height: clamp(200px, 26vw, 280px); margin: -0.5rem -0.5rem 1.25rem; }
-  .prev {
-    position: absolute; width: 64%;
+  /* LEFT — real client captures in tilted browser frames */
+  .wstage { position: relative; height: clamp(210px, 27vw, 290px); margin: -0.5rem -0.5rem 1.25rem; }
+  .shot {
+    position: absolute; width: 62%; margin: 0;
     background: var(--card); border: 1px solid var(--line-soft);
-    border-radius: 14px; overflow: hidden;
-    box-shadow: 0 24px 50px -22px rgba(0,0,0,0.4);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 26px 52px -24px rgba(0,0,0,0.45);
+    transition: transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
   }
-  .prev--a { left: 2%; top: 14%; rotate: -7deg; z-index: 2; }
-  .prev--b { right: 2%; top: 6%; rotate: 6deg; z-index: 1; }
-  .prev__bar { display: flex; gap: 4px; padding: 0.5rem 0.6rem; background: #f3eff0; }
-  .prev__bar span { width: 7px; height: 7px; border-radius: 999px; background: rgba(0,0,0,0.16); }
-  .prev__hero { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 0.7rem; }
-  .prev__hero--coral { background: var(--mesh-coral); }
-  .prev__hero--iris { background: var(--mesh-iris); }
-  .prev__chip { font-size: 0.66rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
-  .prev__btn { font-size: 0.6rem; font-weight: 800; color: var(--ink); background: #fff; padding: 0.22rem 0.5rem; border-radius: 999px; }
-  .prev__rows { padding: 0.6rem; display: flex; flex-direction: column; gap: 0.4rem; }
-  .prev__rows i { display: block; height: 7px; border-radius: 999px; background: rgba(0,0,0,0.1); }
-  .prev__rows i.w60 { width: 60%; }
-  .prev__cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.3rem; margin-top: 0.1rem; }
-  .prev__cards b { height: 26px; border-radius: 6px; background: #f1edee; }
-  .prev__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; }
-  .prev__stats u { height: 22px; border-radius: 6px; background: #f1edee; }
-  .prev__chart { display: flex; align-items: flex-end; gap: 0.25rem; height: 30px; }
-  .prev__chart s { flex: 1; height: var(--h); border-radius: 3px; background: #e2dcdd; }
-  .prev__chart s.on { background: var(--accent); }
+  .shot__bar { display: flex; gap: 4px; padding: 0.5rem 0.6rem; background: #f3eff0; border-bottom: 1px solid var(--line-soft); }
+  .shot__bar i { width: 7px; height: 7px; border-radius: 999px; background: rgba(0,0,0,0.16); }
+  .shot img { width: 100%; height: clamp(118px, 16vw, 168px); object-fit: cover; object-position: top center; }
+  .shot--a { left: 0; top: 18%; rotate: -7deg; z-index: 3; }
+  .shot--b { left: 24%; top: 2%; rotate: 3deg; z-index: 2; }
+  .shot--c { right: 0; top: 22%; rotate: 8deg; z-index: 1; }
+  /* gentle parallax fan-out on hover of the whole card */
+  .wcard--work:hover .shot--a { transform: translate(-6px,-4px) rotate(-9deg); }
+  .wcard--work:hover .shot--c { transform: translate(6px,-2px) rotate(10deg); }
+  @media (prefers-reduced-motion: reduce) { .wcard--work:hover .shot { transform: none; } }
 
   .wproof { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 1.5rem; }
   .wproof__item { background: #f5f1f2; border: 1px solid var(--line-soft); border-radius: 14px; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
