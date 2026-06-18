@@ -246,6 +246,11 @@ h1, h2, h3, h4 {
   .js .reveal[data-delay="4"] { transition-delay: 0.44s; }
 }
 
+/* Brand delight — the smiley is the face of the brand; it winks when you reach its card */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ucWink { 0%, 100% { transform: scaleY(1); } 42%, 58% { transform: scaleY(0.1); } }
+}
+
 /* Marquee — seamless: spacing via item margin (not flex gap) so translateX(-50%) loops with no seam/gap */
 .marquee { overflow: hidden; width: 100%; max-width: 100%; min-width: 0; }
 .marquee__track { display: flex; width: max-content; animation: marquee var(--mq-dur, 30s) linear infinite; }

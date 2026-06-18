@@ -112,6 +112,11 @@ const tags = [
   .wcard--svc { justify-content: space-between; gap: 1.5rem; }
   .bigsmile { position: absolute; border-radius: 999px; display: grid; place-items: center; z-index: 0; }
   .bigsmile svg { width: 58%; height: 58%; }
+  /* delight: the smile winks when you reach its card */
+  @media (prefers-reduced-motion: no-preference) {
+    .bigsmile svg circle { transform-box: fill-box; transform-origin: center; }
+    .wcard--svc:hover .bigsmile svg circle:first-of-type { animation: ucWink 0.55s var(--ease-out); }
+  }
   .bigsmile--pink { width: 150px; height: 150px; background: #ff3ea5; top: -46px; left: -40px; }
   .bigsmile--blue { width: 130px; height: 130px; background: #2f4bff; top: 44%; right: -54px; }
   .wtags { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-content: center; flex: 1; padding: 1rem 0; }

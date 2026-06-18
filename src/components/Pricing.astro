@@ -113,6 +113,11 @@ const features = [
   .pr__cta-ic svg { width: 30px; height: 30px; }
   .pr__smiley { position: absolute; right: -28px; bottom: -28px; width: 168px; height: 168px; border-radius: 999px 999px 0 999px; background: #f6c14e; display: grid; place-items: center; }
   .pr__smiley svg { width: 84px; height: 84px; transform: translate(-12px,-12px); }
+  /* delight: the smile winks when you reach the plan card */
+  @media (prefers-reduced-motion: no-preference) {
+    .pr__smiley svg circle { transform-box: fill-box; transform-origin: center; }
+    .pr__plan:hover .pr__smiley svg circle:first-of-type { animation: ucWink 0.55s var(--ease-out); }
+  }
 
   .pr__guars { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); max-width: 1000px; margin: clamp(1rem, 2vw, 1.5rem) auto 0; }
   .guar { display: flex; gap: 1rem; align-items: flex-start; border: 1px solid var(--line); border-radius: var(--r-card); padding: clamp(1.25rem, 2.4vw, 1.75rem); }
