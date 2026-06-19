@@ -108,8 +108,20 @@ const icons: Record<string, string> = {
   }
   @media (max-width: 520px) {
     .ben__grid { grid-template-columns: 1fr; }
-    .ben__item--feature { grid-column: span 1; }
-    .ben__item:not(.ben__item--feature) { align-items: center; text-align: center; }
-    .ben__item:not(.ben__item--feature) .ben__body { margin-inline: auto; }
+    .ben__item { align-items: center; text-align: center; }
+    .ben__item .ben__body { margin-inline: auto; }
+    /* on mobile every card is identical — drop the drenched feature treatment */
+    .ben__item--feature {
+      grid-column: span 1; background: none; color: inherit;
+      padding: 0; min-height: 0; border-radius: 0; box-shadow: none; overflow: visible;
+    }
+    .ben__item--feature::after { display: none; }
+    .ben__item--feature .ben__tile {
+      background: var(--mesh-coral); box-shadow: var(--shadow-card);
+      width: clamp(80px, 9vw, 104px); border-radius: var(--r-tile); margin-bottom: 1.25rem;
+    }
+    .ben__item--feature .ben__tile svg { width: 38%; height: 38%; }
+    .ben__item--feature .ben__title { color: var(--ink); font-size: 1.4rem; letter-spacing: -0.025em; text-shadow: none; }
+    .ben__item--feature .ben__body { color: var(--ink-soft); font-size: 1rem; font-weight: 500; }
   }
 </style>
