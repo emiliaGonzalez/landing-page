@@ -48,11 +48,11 @@ const icons: Record<string, string> = {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(0, auto);
-    gap: clamp(1.75rem, 3vw, 2.75rem) clamp(1.5rem, 2.5vw, 2.5rem);
+    gap: clamp(1.4rem, 2.2vw, 2rem) clamp(1.25rem, 2vw, 1.9rem);
   }
   .ben__item { display: flex; flex-direction: column; }
   .ben__tile {
-    width: clamp(96px, 12vw, 130px); aspect-ratio: 1;
+    width: clamp(80px, 9vw, 104px); aspect-ratio: 1;
     border-radius: var(--r-tile);
     display: grid; place-items: center;
     color: rgba(255,255,255,0.92);
@@ -81,10 +81,10 @@ const icons: Record<string, string> = {
     grid-column: span 2; grid-row: span 2;
     justify-content: flex-end;
     border-radius: var(--r-card-lg);
-    padding: clamp(1.75rem, 3vw, 2.75rem);
+    padding: clamp(1.4rem, 2.4vw, 2.1rem);
     color: #fff; position: relative; overflow: hidden;
     box-shadow: var(--shadow-card);
-    min-height: 300px;
+    min-height: 230px;
   }
   .ben__item--coral { background: var(--mesh-coral); }
   .ben__item--feature::after {
