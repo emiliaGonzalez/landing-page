@@ -28,13 +28,11 @@ const tags = [
       <div class="wproof">
         <div class="wproof__item">
           <span class="wproof__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h7l-1 7 9-11h-7Z"/></svg></span>
-          <strong>Entrega en 48h</strong>
-          <span class="wproof__sub">Promedio real, una a la vez</span>
+          <span class="wproof__txt"><strong>Entrega en 48h</strong><span class="wproof__sub">Promedio real, una a la vez</span></span>
         </div>
         <div class="wproof__item">
           <span class="wproof__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8-5 4 5 4M15 8l5 4-5 4"/></svg></span>
-          <strong>Código 100% tuyo</strong>
-          <span class="wproof__sub">Repos, accesos y propiedad</span>
+          <span class="wproof__txt"><strong>Código 100% tuyo</strong><span class="wproof__sub">Repos, accesos y propiedad</span></span>
         </div>
       </div>
 
@@ -105,6 +103,7 @@ const tags = [
   .wproof__item { background: #f5f1f2; border: 1px solid var(--line-soft); border-radius: 14px; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.2rem; }
   .wproof__ic { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--card); color: var(--accent); margin-bottom: 0.3rem; }
   .wproof__ic svg { width: 17px; height: 17px; }
+  .wproof__txt { display: flex; flex-direction: column; gap: 0.15rem; }
   .wproof__item strong { font-size: 16px; letter-spacing: -0.01em; }
   .wproof__sub { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
 
@@ -127,5 +126,11 @@ const tags = [
     .work__grid { grid-template-columns: 1fr; }
     .wcard { min-height: 0; }
     .wcard--svc { min-height: 480px; }
+  }
+  /* On phones the two proof cards stack full-width so labels stop wrapping awkwardly */
+  @media (max-width: 520px) {
+    .wproof { grid-template-columns: 1fr; gap: 0.6rem; }
+    .wproof__item { flex-direction: row; align-items: center; gap: 0.8rem; padding: 0.85rem 1rem; }
+    .wproof__ic { margin-bottom: 0; flex-shrink: 0; }
   }
 </style>
