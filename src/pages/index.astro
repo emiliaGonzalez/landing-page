@@ -22,7 +22,33 @@ import FooterCta from "../components/FooterCta.astro";
     <Faq />
   </main>
   <FooterCta />
+
+  <!-- Mobile-only sticky CTA: thumb-zone shortcut to pricing (nav buttons are hidden ≤479px) -->
+  <a class="mcta" href="#precios" data-mcta>
+    Ver precios
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
 </Base>
+
+<style is:global>
+  .mcta {
+    position: fixed; z-index: 150;
+    left: 50%; bottom: max(1rem, env(safe-area-inset-bottom));
+    transform: translate(-50%, 160%);
+    display: none; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: #fff;
+    font-weight: 700; font-size: 16px; letter-spacing: -0.01em;
+    padding: 13px 22px; border-radius: 999px;
+    box-shadow: 0 14px 30px -10px rgba(255, 90, 0, 0.55), 0 4px 10px -4px rgba(0,0,0,0.3);
+    transition: transform 0.5s var(--ease-out);
+    will-change: transform;
+  }
+  .mcta svg { width: 18px; height: 18px; }
+  .mcta.is-on { transform: translate(-50%, 0); }
+  .mcta:active { transform: translate(-50%, 0) scale(0.96); }
+  @media (max-width: 600px) { .mcta { display: inline-flex; } }
+  @media (prefers-reduced-motion: reduce) { .mcta { transition: none; } }
+</style>
 
 <script>
   // ---- Nav: scrolled state + mobile sheet ----
@@ -79,6 +105,23 @@ import FooterCta from "../components/FooterCta.astro";
     window.addEventListener("scroll", onScrollReveal, { passive: true });
     window.addEventListener("resize", onScrollReveal, { passive: true });
     check();
+  }
+
+  // ---- Mobile sticky CTA: show after the hero, hide once pricing is on screen ----
+  const mcta = document.querySelector<HTMLElement>("[data-mcta]");
+  if (mcta) {
+    const precios = document.querySelector<HTMLElement>("#precios");
+    let mTick = false;
+    const updateMcta = () => {
+      mTick = false;
+      const pastHero = window.scrollY > window.innerHeight * 0.75;
+      const preciosShown = precios ? precios.getBoundingClientRect().top < window.innerHeight * 0.85 : false;
+      mcta.classList.toggle("is-on", pastHero && !preciosShown);
+    };
+    const onMcta = () => { if (!mTick) { mTick = true; requestAnimationFrame(updateMcta); } };
+    window.addEventListener("scroll", onMcta, { passive: true });
+    window.addEventListener("resize", onMcta, { passive: true });
+    updateMcta();
   }
 
   // ---- Confetti: the brand smiley bursts confetti on click (no email, just joy) ----
