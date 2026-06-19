@@ -84,6 +84,11 @@ const features = [
   .pr__pill-dot { width: 0.45rem; height: 0.45rem; border-radius: 999px; background: var(--accent); }
   .pr__joinmark { align-self: center; margin-block: clamp(1.5rem, 4vh, 3rem); width: clamp(76px, 9vw, 104px); }
   .pr__joinmark svg { width: 100%; height: auto; filter: drop-shadow(0 14px 30px rgba(0,0,0,0.18)); }
+  /* delight: winks when you reach the join card, like the other brand smileys */
+  @media (prefers-reduced-motion: no-preference) {
+    .pr__joinmark svg circle { transform-box: fill-box; transform-origin: center; }
+    .pr__join:hover .pr__joinmark svg circle:first-of-type { animation: ucWink 0.55s var(--ease-out); }
+  }
   .pr__joinfoot { display: flex; flex-direction: column; gap: 0.75rem; }
   .pr__join-title { font-size: clamp(2rem, 1.5rem + 1.4vw, 2.5rem); line-height: 0.96; letter-spacing: -0.04em; }
   .pr__join-sub { color: var(--ink-soft); font-weight: 400; font-size: 16px; max-width: 30ch; }
