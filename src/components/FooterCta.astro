@@ -1,34 +1,30 @@
 ---
 import Brandmark from "./Brandmark.astro";
 const year = new Date().getFullYear();
-const weekdays = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
-// junio 2026 starts on Monday (June 1, 2026 = Monday)
-const blanks = 1; // Sunday cell empty before Mon 1
-const days = Array.from({ length: 30 }, (_, i) => i + 1);
-const available = new Set([17, 18, 19, 23, 24, 25, 26, 30]);
-const selected = 24;
+
+// ⬇️ PEGA AQUÍ TU LINK DE CALENDLY (el del evento de 15 min).
+//    Conecta tu Google/Outlook una vez en calendly.com → ahí vive el sync real.
+//    Ejemplo: "https://calendly.com/emilia-unlimitedcode/15min"
+const CALENDLY_USER_URL = "https://calendly.com/TU-USUARIO/15min";
+
+// Tema del embed (oscuro, acento naranja de marca). No tocar salvo el color.
+const CALENDLY_URL =
+  CALENDLY_USER_URL +
+  "?hide_gdpr_banner=1&background_color=121012&text_color=ffffff&primary_color=ff5a00";
 ---
 <section class="cta on-abyss" id="contacto">
   <div class="container cta__grid">
     <div class="cta__left">
       <a class="cta__logo" href="#top" aria-label="Unlimited Code — inicio"><Brandmark tone="light" /></a>
       <h2 class="display-1 cta__title">Checa si Unlimited Code es para ti <span class="serif">(claro que sí lo es)</span></h2>
-      <p class="lead cta__sub">Agenda una llamada de 15 minutos. Sin presión, sin discurso de ventas.</p>
+      <p class="lead cta__sub">Agenda una llamada de 15 minutos. Elige el día y la hora que te queden — sin presión, sin discurso de ventas.</p>
     </div>
 
-    <div class="cal reveal" data-delay="1" aria-hidden="true">
-      <div class="cal__top">
-        <span class="cal__month">junio <span>2026</span></span>
-        <span class="cal__nav"><button>‹</button><button>›</button></span>
-      </div>
-      <div class="cal__week">{weekdays.map((d) => <span>{d}</span>)}</div>
-      <div class="cal__grid">
-        {Array.from({ length: blanks }).map(() => <span class="cal__blank"></span>)}
-        {days.map((d) => (
-          <span class={`cal__day${available.has(d) ? " is-open" : ""}${d === selected ? " is-sel" : ""}`}>{d}</span>
-        ))}
-      </div>
-      <div class="cal__foot"><span class="cal__dot"></span> 8 horarios disponibles esta semana</div>
+    <div class="cal-embed reveal" data-delay="1">
+      <div class="calendly-inline-widget" data-url={CALENDLY_URL}></div>
+      <noscript>
+        <a class="cal-embed__fallback" href={CALENDLY_USER_URL} target="_blank" rel="noopener">Agenda tu llamada en Calendly →</a>
+      </noscript>
     </div>
   </div>
 
@@ -43,46 +39,34 @@ const selected = 24;
   </footer>
 </section>
 
+<script is:inline async src="https://assets.calendly.com/assets/external/widget.js"></script>
+
 <style>
   .cta { background: var(--abyss); color: #fff; padding-top: clamp(4rem, 9vh, 7rem); }
-  .cta__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .cta__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
   .cta__logo { display: inline-flex; margin-bottom: 1.5rem; }
   .cta__title { color: #fff; max-width: 14ch; font-size: clamp(2.4rem, 1.6rem + 3vw, 3.6rem); line-height: 1; letter-spacing: -0.035em; text-wrap: balance; }
   .cta__title .serif { color: #fff; }
-  .cta__sub { color: var(--on-abyss-soft); margin-top: 1.4rem; max-width: 40ch; }
-  .cta__actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; margin-top: 2.25rem; }
-  .cta__mail { color: var(--on-abyss-soft); font-weight: 500; transition: color 0.18s var(--ease-out); }
-  .cta__mail strong { color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; text-decoration-thickness: 2px; }
-  .cta__mail:hover { color: #fff; }
+  .cta__sub { color: var(--on-abyss-soft); margin-top: 1.4rem; max-width: 42ch; }
 
-  /* Calendar widget */
-  .cal { background: var(--abyss-2); border: 1px solid var(--line-abyss); border-radius: var(--r-card-lg); padding: clamp(1.25rem, 2.5vw, 1.9rem); box-shadow: 0 30px 70px -30px rgba(0,0,0,0.7); }
-  .cal__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
-  .cal__month { font-weight: 600; font-size: 1.2rem; letter-spacing: -0.02em; }
-  .cal__month span { color: var(--on-abyss-soft); }
-  .cal__nav { display: flex; gap: 0.4rem; }
-  .cal__nav button { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line-abyss); color: var(--on-abyss-soft); font-size: 1rem; }
-  .cal__week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.3rem; margin-bottom: 0.5rem; }
-  .cal__week span { text-align: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; color: var(--on-abyss-soft); }
-  .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.3rem; }
-  .cal__day, .cal__blank { aspect-ratio: 1; display: grid; place-items: center; font-size: 0.9rem; font-weight: 600; border-radius: 9px; color: rgba(255,255,255,0.32); }
-  .cal__day.is-open { color: #fff; background: rgba(255,255,255,0.07); border: 1px solid var(--line-abyss); }
-  .cal__day.is-sel { background: var(--accent); color: #fff; border-color: transparent; }
-  .cal__foot { display: flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--on-abyss-soft); }
-  .cal__dot { width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--accent); }
+  /* Calendly embed — themed to the dark section; day + time + sync handled by Calendly */
+  .cal-embed {
+    border: 1px solid var(--line-abyss); border-radius: var(--r-card-lg);
+    overflow: hidden; background: var(--abyss-2);
+    box-shadow: 0 30px 70px -30px rgba(0,0,0,0.7);
+  }
+  .calendly-inline-widget { min-width: 280px; height: 680px; width: 100%; }
+  .cal-embed__fallback { display: inline-block; padding: 1.5rem; color: #fff; font-weight: 700; }
 
   /* Footer bar */
   .foot { margin-top: clamp(4rem, 9vh, 7rem); border-top: 1px solid var(--line-abyss); padding-block: 2rem; }
   .foot__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; }
   .foot__loc { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--on-abyss-soft); font-weight: 500; font-size: 0.95rem; }
-  .foot__nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; }
-  .foot__nav a { color: var(--on-abyss-soft); font-weight: 600; font-size: 0.95rem; transition: color 0.18s var(--ease-out); }
-  .foot__nav a:hover { color: #fff; }
   .foot__legal { color: var(--on-abyss-soft); font-size: 0.9rem; font-weight: 500; }
 
   @media (max-width: 860px) {
     .cta__grid { grid-template-columns: 1fr; }
-    .cal { max-width: 440px; }
+    .cal-embed { max-width: 480px; }
   }
   @media (max-width: 600px) {
     .foot__inner { flex-direction: column; align-items: flex-start; }
