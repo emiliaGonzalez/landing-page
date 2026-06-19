@@ -1,5 +1,6 @@
 ---
 import Brandmark from "./Brandmark.astro";
+import { STRIPE_PORTAL_URL } from "../site";
 ---
 <header class="nav" data-nav>
   <div class="nav__inner container">
@@ -7,7 +8,7 @@ import Brandmark from "./Brandmark.astro";
       <a class="nav__brand" href="#top" aria-label="Unlimited Code — inicio"><Brandmark /></a>
 
       <nav class="nav__links" aria-label="Principal">
-        <a class="nav__pill" href="#precios">Iniciar sesión</a>
+        <a class="nav__pill" href={STRIPE_PORTAL_URL}>Iniciar sesión</a>
         <a class="nav__pill" href="#contacto">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z"/></svg>
           Agenda una llamada
@@ -26,7 +27,7 @@ import Brandmark from "./Brandmark.astro";
     <a href="#trabajo" data-sheet-link>Trabajo</a>
     <a href="#precios" data-sheet-link>Precios</a>
     <a href="#faq" data-sheet-link>FAQ</a>
-    <a href="#precios" data-sheet-link>Iniciar sesión</a>
+    <a href={STRIPE_PORTAL_URL} data-sheet-link>Iniciar sesión</a>
     <a class="btn btn--accent btn--block" href="#contacto" data-sheet-link>Agenda una llamada</a>
   </div>
 </header>
