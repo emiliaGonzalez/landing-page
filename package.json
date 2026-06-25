@@ -10,6 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.18"
+    "@datadog/browser-logs": "^6.33.0",
+    "@datadog/browser-rum": "^6.33.0",
+    "astro": "^4.16.18",
+    "posthog-js": "^1.393.5"
   }
 }

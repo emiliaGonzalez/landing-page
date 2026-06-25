@@ -44,7 +44,7 @@ const features = [
         <ul class="pr__features">
           {features.map((f) => (<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>{f}</li>))}
         </ul>
-        <a class="pr__cta" href={STRIPE_CHECKOUT_URL}>
+        <a class="pr__cta" href={STRIPE_CHECKOUT_URL} data-track="cta_join_checkout">
           <span class="pr__cta-ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="16" r="1.4" fill="currentColor" stroke="none"/><circle cx="25.5" cy="16" r="1.4" fill="currentColor" stroke="none"/><path d="M13 24c2 2.6 4.4 4 7 4s5-1.4 7-4"/></svg></span>
           Únete hoy
         </a>

@@ -42,5 +42,23 @@ const {
   <body>
     <a href="#contenido" class="sr-only">Saltar al contenido</a>
     <slot />
+
+    <script>
+      import { initAnalytics, track } from "../analytics";
+      initAnalytics();
+      // Tracking de CTAs por delegación — fija en pointerdown para no perder el
+      // evento cuando el click navega a un destino externo (Stripe, Calendly).
+      document.addEventListener(
+        "pointerdown",
+        (e) => {
+          const el = (e.target as HTMLElement)?.closest?.("[data-track]") as HTMLElement | null;
+          if (!el) return;
+          track(el.getAttribute("data-track") || "cta_click", {
+            label: el.textContent?.trim().slice(0, 40),
+          });
+        },
+        { capture: true },
+      );
+    </script>
   </body>
 </html>
