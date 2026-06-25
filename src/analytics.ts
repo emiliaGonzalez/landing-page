@@ -11,10 +11,13 @@ import { datadogLogs } from "@datadog/browser-logs";
 // ─────────────────────────────────────────────────────────────────────────────
 const E = import.meta.env as Record<string, string | undefined>;
 
+// PostHog: proyecto "Julia" compartido (a propósito, como los demás frontends).
+// Datadog: app RUM DEDICADA de Unlimited Code (no la de Baile).
+// Identificadores públicos de cliente; override vía .env PUBLIC_*.
 const POSTHOG_KEY = E.PUBLIC_POSTHOG_KEY || "phc_NzTa6LVEGwk0GvuyAY4SsMlhqVp39YWkWmlsC1BpJJl";
 const POSTHOG_HOST = E.PUBLIC_POSTHOG_HOST || "https://d3raulgin79psw.cloudfront.net";
-const DD_APP_ID = E.PUBLIC_DD_RUM_APPLICATION_ID || "01f3d868-c236-4e24-86dc-215c4b31f741";
-const DD_TOKEN = E.PUBLIC_DD_RUM_CLIENT_TOKEN || "pub4b516065ea95b5bd04970d56dc747c61";
+const DD_APP_ID = E.PUBLIC_DD_RUM_APPLICATION_ID || "6b7ef78f-797a-467e-a123-0cb78d73370f";
+const DD_TOKEN = E.PUBLIC_DD_RUM_CLIENT_TOKEN || "pub5de52374add505cb8144816a392e945b";
 const DD_SITE = E.PUBLIC_DD_SITE || "us5.datadoghq.com";
 const DD_SERVICE = E.PUBLIC_DD_SERVICE || "unlimited-code";
 const DD_ENV = E.PUBLIC_DD_ENV || "dev";
