@@ -10,8 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^7.8.1",
     "@datadog/browser-logs": "^6.33.0",
     "@datadog/browser-rum": "^6.33.0",
+    "@vercel/analytics": "^2.0.1",
     "astro": "^4.16.18",
     "posthog-js": "^1.393.5"
   }
