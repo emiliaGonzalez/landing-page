@@ -45,7 +45,9 @@ const {
 
     <script>
       import { initAnalytics, track } from "../analytics";
+      import { initMetaPixel, trackMetaEvent } from "../meta-pixel";
       initAnalytics();
+      initMetaPixel(); // Meta Pixel: init + PageView del pageload
       // Tracking de CTAs por delegación — fija en pointerdown para no perder el
       // evento cuando el click navega a un destino externo (Stripe, Calendly).
       document.addEventListener(
@@ -53,9 +55,12 @@ const {
         (e) => {
           const el = (e.target as HTMLElement)?.closest?.("[data-track]") as HTMLElement | null;
           if (!el) return;
-          track(el.getAttribute("data-track") || "cta_click", {
-            label: el.textContent?.trim().slice(0, 40),
-          });
+          const name = el.getAttribute("data-track") || "cta_click";
+          track(name, { label: el.textContent?.trim().slice(0, 40) });
+          // Conversión de Meta solo en el CTA de checkout de Stripe ("Únete hoy").
+          if (name === "cta_join_checkout") {
+            trackMetaEvent("Purchase", { value: 24995, currency: "MXN" });
+          }
         },
         { capture: true },
       );
