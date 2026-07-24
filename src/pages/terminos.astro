@@ -1,0 +1,258 @@
+---
+import Base from "../layouts/Base.astro";
+import Brandmark from "../components/Brandmark.astro";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Datos de la empresa que opera el servicio. Edita aquí si cambian.
+// (RFC, domicilio fiscal y correo de contacto son campos que conviene completar
+//  con los datos reales de la sociedad antes de publicar.)
+// ─────────────────────────────────────────────────────────────────────────────
+const COMPANY = "SERPACLOUD SAPI DE CV";
+const BRAND = "Unlimited Code";
+const CONTACT_EMAIL = "emilia@julia.mx";
+const SITE = "unlimitedcode.mx";
+const UPDATED = "24 de julio de 2026";
+
+const title = "Términos y Condiciones — Unlimited Code";
+const description = `Términos y condiciones del servicio de suscripción de desarrollo Unlimited Code, operado por ${COMPANY}.`;
+---
+<Base title={title} description={description}>
+  <header class="lhead">
+    <div class="container lhead__inner">
+      <a class="lhead__brand" href="/" aria-label={`${BRAND} — inicio`}><Brandmark /></a>
+      <a class="lhead__back" href="/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Volver al inicio
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido" class="legal">
+    <div class="container legal__wrap">
+      <p class="legal__eyebrow">Legal</p>
+      <h1 class="display-2 legal__title">Términos y <span class="serif">condiciones</span></h1>
+      <p class="legal__meta">Última actualización: {UPDATED}</p>
+
+      <div class="legal__body">
+        <p>
+          Los presentes Términos y Condiciones (los «<strong>Términos</strong>») regulan el acceso y
+          uso del servicio de suscripción de desarrollo de software comercializado bajo la marca
+          «<strong>{BRAND}</strong>» (el «<strong>Servicio</strong>»), ofrecido y operado por
+          <strong>{COMPANY}</strong> (la «<strong>Empresa</strong>», «nosotros»), a través del sitio
+          <a href={`https://${SITE}`}>{SITE}</a> (el «<strong>Sitio</strong>»).
+        </p>
+        <p>
+          Al contratar el Servicio, crear una suscripción o utilizar el Sitio, usted (el
+          «<strong>Cliente</strong>») declara haber leído, entendido y aceptado estos Términos en su
+          totalidad. Si no está de acuerdo con ellos, deberá abstenerse de contratar o utilizar el
+          Servicio.
+        </p>
+
+        <h2>1. Identificación del prestador</h2>
+        <p>
+          El Servicio es prestado por {COMPANY}, sociedad constituida conforme a las leyes de los
+          Estados Unidos Mexicanos. Cualquier comunicación relacionada con estos Términos podrá
+          dirigirse al correo electrónico <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+        </p>
+
+        <h2>2. Definiciones</h2>
+        <ul>
+          <li><strong>Suscripción:</strong> plan de pago recurrente mensual que otorga al Cliente el derecho a solicitar trabajos de desarrollo bajo las condiciones aquí descritas.</li>
+          <li><strong>Solicitud:</strong> cada tarea o requerimiento de desarrollo que el Cliente somete a la Empresa dentro de su Suscripción.</li>
+          <li><strong>Entregable:</strong> el código, sitio, aplicación, automatización u otro producto de trabajo resultante de una Solicitud.</li>
+          <li><strong>Periodo de facturación:</strong> el ciclo mensual por el cual se cobra la Suscripción.</li>
+        </ul>
+
+        <h2>3. Descripción del Servicio</h2>
+        <p>
+          {BRAND} es un servicio de suscripción de desarrollo de software. Mediante una cuota fija
+          mensual, el Cliente puede enviar todas las Solicitudes que desee, atendiéndose
+          <strong>una Solicitud activa a la vez</strong> en orden secuencial. La Empresa realiza sus
+          mejores esfuerzos para entregar en pocos días hábiles, entendiéndose que los tiempos de
+          entrega son estimados y dependen del alcance y la complejidad de cada Solicitud.
+        </p>
+        <p>
+          El Servicio se presta como una prestación de servicios profesionales y no constituye una
+          relación laboral, de asociación ni de exclusividad entre las partes.
+        </p>
+
+        <h2>4. Suscripción, precios y pagos</h2>
+        <ul>
+          <li>La Suscripción es de pago recurrente mensual, cobrado por adelantado al inicio de cada Periodo de facturación.</li>
+          <li>Los pagos se procesan a través de nuestro proveedor de pagos (Stripe). El Cliente autoriza el cargo automático recurrente al medio de pago registrado.</li>
+          <li>Los precios se muestran en el Sitio en pesos mexicanos (MXN), salvo que se indique expresamente otra divisa. Los precios pueden incluir o excluir impuestos según se señale; los impuestos aplicables correrán conforme a la legislación fiscal vigente.</li>
+          <li>La Empresa podrá modificar los precios; cualquier cambio se notificará con antelación razonable y aplicará a partir del siguiente Periodo de facturación.</li>
+          <li>La falta de pago faculta a la Empresa a suspender o dar por terminada la Suscripción.</li>
+        </ul>
+
+        <h2>5. Solicitudes y entregas</h2>
+        <ul>
+          <li>El Cliente es responsable de describir sus Solicitudes con la información suficiente para su ejecución.</li>
+          <li>Se atiende una Solicitud a la vez; las Solicitudes adicionales se colocan en cola y se atienden al concluir la anterior.</li>
+          <li>Los tiempos de entrega son estimaciones de buena fe y no constituyen una garantía de plazo. Solicitudes de mayor alcance pueden dividirse en entregas parciales.</li>
+          <li>El Cliente contará con la posibilidad de solicitar revisiones razonables sobre un Entregable dentro del alcance de la Solicitud original.</li>
+        </ul>
+
+        <h2>6. Pausas y cancelación</h2>
+        <p>
+          El Cliente puede <strong>pausar o cancelar</strong> su Suscripción en cualquier momento
+          desde el portal de cliente, con efecto al término del Periodo de facturación en curso. Al
+          pausar, se conserva el tiempo restante del ciclo para su uso posterior conforme a las
+          reglas del portal. La cancelación detiene los cobros futuros; el Cliente conserva el
+          acceso hasta el final del periodo ya pagado.
+        </p>
+
+        <h2>7. Reembolsos</h2>
+        <p>
+          Dada la naturaleza del Servicio, en la que la capacidad de desarrollo se reserva y se
+          consume durante cada Periodo de facturación, los pagos correspondientes a periodos ya
+          iniciados <strong>no son reembolsables</strong>, salvo disposición legal en contrario o
+          acuerdo expreso por escrito con la Empresa. Lo anterior sin perjuicio de los derechos que
+          la legislación de protección al consumidor otorgue al Cliente.
+        </p>
+
+        <h2>8. Propiedad intelectual</h2>
+        <p>
+          Salvo pacto distinto por escrito, una vez cubierto el pago correspondiente, los
+          Entregables desarrollados específicamente para el Cliente son
+          <strong>propiedad del Cliente</strong>. El Cliente recibe la titularidad o, en su caso,
+          una licencia perpetua y no exclusiva sobre el código creado a la medida para él.
+        </p>
+        <p>
+          Se exceptúan de lo anterior las herramientas, librerías, componentes de código abierto,
+          frameworks y conocimientos preexistentes o de uso general que la Empresa emplee para
+          prestar el Servicio, los cuales conservan su propia titularidad y licencias. La marca
+          «{BRAND}», el Sitio y los materiales de la Empresa son propiedad de {COMPANY}.
+        </p>
+
+        <h2>9. Obligaciones del Cliente</h2>
+        <ul>
+          <li>Proporcionar información veraz y los accesos, materiales y contenidos necesarios para ejecutar sus Solicitudes.</li>
+          <li>Garantizar que cuenta con los derechos sobre los contenidos, marcas o materiales que entregue para su uso en los Entregables.</li>
+          <li>Abstenerse de utilizar el Servicio para fines ilícitos o que infrinjan derechos de terceros.</li>
+        </ul>
+
+        <h2>10. Confidencialidad</h2>
+        <p>
+          Cada parte se obliga a mantener la confidencialidad de la información no pública que reciba
+          de la otra con motivo del Servicio, y a utilizarla únicamente para los fines de la relación
+          contractual.
+        </p>
+
+        <h2>11. Garantías y limitación de responsabilidad</h2>
+        <p>
+          La Empresa presta el Servicio con estándares de calidad profesional. No obstante, el
+          Servicio se ofrece «tal cual» y, en la máxima medida permitida por la ley, la Empresa no
+          garantiza que los Entregables estén libres de errores ni que resulten aptos para fines no
+          comunicados expresamente por el Cliente.
+        </p>
+        <p>
+          En la medida permitida por la legislación aplicable, la responsabilidad total de la Empresa
+          frente al Cliente por cualquier reclamación relacionada con el Servicio se limita al monto
+          efectivamente pagado por el Cliente durante el Periodo de facturación en que se originó la
+          reclamación. La Empresa no será responsable por daños indirectos, incidentales o lucro
+          cesante.
+        </p>
+
+        <h2>12. Protección de datos personales</h2>
+        <p>
+          El tratamiento de los datos personales del Cliente se realiza conforme a la Ley Federal de
+          Protección de Datos Personales en Posesión de los Particulares y su normativa aplicable, en
+          los términos del Aviso de Privacidad correspondiente. Los datos de pago son procesados
+          directamente por nuestro proveedor de pagos bajo sus propias políticas de seguridad.
+        </p>
+
+        <h2>13. Caso fortuito y fuerza mayor</h2>
+        <p>
+          Ninguna de las partes será responsable por el incumplimiento derivado de causas de fuerza
+          mayor o caso fortuito fuera de su control razonable, mientras subsistan dichas causas.
+        </p>
+
+        <h2>14. Modificaciones a los Términos</h2>
+        <p>
+          La Empresa podrá actualizar estos Términos en cualquier momento. La versión vigente se
+          publicará en el Sitio con su fecha de actualización. El uso continuado del Servicio tras la
+          publicación de cambios implica su aceptación.
+        </p>
+
+        <h2>15. Legislación aplicable y jurisdicción</h2>
+        <p>
+          Estos Términos se rigen por las leyes de los Estados Unidos Mexicanos. Para la
+          interpretación y cumplimiento de los mismos, las partes se someten a la jurisdicción de los
+          tribunales competentes de la Ciudad de México, renunciando a cualquier otro fuero que
+          pudiera corresponderles por razón de su domicilio presente o futuro.
+        </p>
+
+        <h2>16. Contacto</h2>
+        <p>
+          Para dudas, aclaraciones o ejercicio de derechos relacionados con el Servicio, puede
+          escribirnos a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> o agendar una llamada
+          desde <a href="/#contacto">nuestra página de contacto</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="lfoot">
+    <div class="container lfoot__inner">
+      <p class="lfoot__legal">© {new Date().getFullYear()} {BRAND} · Un servicio de {COMPANY}</p>
+      <a class="lfoot__link" href="/">Volver al inicio</a>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  .lhead { padding-block: clamp(1.4rem, 3vh, 2rem); }
+  .lhead__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .lhead__back {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 8px 16px; min-height: 40px; border-radius: var(--r-btn);
+    background: var(--card); border: 1px solid var(--line-soft);
+    font-weight: 500; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap;
+    transition: transform 0.16s var(--ease-out), box-shadow 0.2s var(--ease-out);
+  }
+  .lhead__back:hover { transform: translateY(-1px); box-shadow: var(--shadow-card); }
+
+  .legal { padding-block: clamp(2rem, 5vh, 4rem) clamp(3.5rem, 8vh, 6rem); }
+  .legal__wrap { max-width: 760px; }
+  .legal__eyebrow {
+    display: inline-block; font-weight: 600; font-size: 0.8rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+  }
+  .legal__title { margin-bottom: 0.6rem; }
+  .legal__meta { color: var(--ink-soft); font-weight: 500; font-size: 0.95rem; margin-bottom: clamp(2rem, 5vh, 3rem); }
+
+  .legal__body {
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r-card-lg);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+  .legal__body h2 {
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+    line-height: 1.1; letter-spacing: -0.03em;
+    margin-top: 2.25rem; margin-bottom: 0.75rem;
+  }
+  .legal__body h2:first-child { margin-top: 0; }
+  .legal__body p { color: var(--ink-soft); line-height: 1.6; margin-bottom: 1rem; }
+  .legal__body p:last-child { margin-bottom: 0; }
+  .legal__body ul { color: var(--ink-soft); line-height: 1.6; margin: 0 0 1rem; padding-left: 1.25rem; }
+  .legal__body li { margin-bottom: 0.5rem; }
+  .legal__body li::marker { color: var(--accent); }
+  .legal__body strong { color: var(--ink); font-weight: 600; }
+  .legal__body a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
+  .legal__body a:hover { text-decoration-color: var(--accent); }
+
+  .lfoot { border-top: 1px solid var(--line-soft); padding-block: 2rem; }
+  .lfoot__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.5rem; }
+  .lfoot__legal { color: var(--ink-soft); font-weight: 500; font-size: 0.9rem; }
+  .lfoot__link { color: var(--ink); font-weight: 600; font-size: 0.9rem; }
+  .lfoot__link:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .lfoot__inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</Base>

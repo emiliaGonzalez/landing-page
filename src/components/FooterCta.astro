@@ -34,7 +34,11 @@ const CALENDLY_URL =
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
         Con sede en Ciudad de México
       </p>
-      <p class="foot__legal">© {year} Unlimited Code</p>
+      <p class="foot__legal">
+        © {year} Unlimited Code
+        <span class="foot__sep" aria-hidden="true">·</span>
+        <a class="foot__link" href="/terminos">Términos y condiciones</a>
+      </p>
     </div>
   </footer>
 </section>
@@ -63,6 +67,9 @@ const CALENDLY_URL =
   .foot__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; }
   .foot__loc { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--on-abyss-soft); font-weight: 500; font-size: 0.95rem; }
   .foot__legal { color: var(--on-abyss-soft); font-size: 0.9rem; font-weight: 500; }
+  .foot__sep { margin-inline: 0.5rem; opacity: 0.6; }
+  .foot__link { color: var(--on-abyss-soft); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line-abyss); }
+  .foot__link:hover { color: #fff; }
 
   @media (max-width: 860px) {
     .cta__grid { grid-template-columns: 1fr; }
